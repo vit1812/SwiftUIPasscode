@@ -42,6 +42,10 @@ public struct PasscodeInput {
     public typealias CompletionHandler = (String) -> Void
     
     public let completeHandler: CompletionHandler?
+    
+    public let title: String?
+    
+    public let subTitle: String?
 
     // MARK: - Initializers
 
@@ -55,11 +59,16 @@ public struct PasscodeInput {
     ///                             ignored and replaced with 1 instead.
     public init(
         passcodeLength: Int = 4,
+        title: String? = nil,
+        subTitle: String? = nil,
         completeHandler: CompletionHandler? = nil
     ) {
         self.passcodeLength = max(1, passcodeLength)
         
         self.completeHandler = completeHandler
+        
+        self.title = title
+        self.subTitle = subTitle
     }
 
 }

@@ -18,7 +18,18 @@ public struct SwiftUIPasscode {
 extension SwiftUIPasscode: View {
 
     public var body: some View {
-        VStack(spacing: 40.0) {
+        VStack(spacing: 40) {
+            VStack(spacing: 8) {
+                if passcodeInput.title != nil {
+                    Text(passcodeInput.title!)
+                }
+                
+                if passcodeInput.subTitle != nil {
+                    Text(passcodeInput.subTitle!)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
             PasscodeInputIndicatorView(PasscodeInput: $passcodeInput)
             
             ZStack(alignment: .bottomTrailing) {
@@ -62,8 +73,15 @@ extension SwiftUIPasscode {
 
 struct SwiftUIPasscode_Previews: PreviewProvider {
 
+    static let input = PasscodeInput(
+        passcodeLength: 6,
+        title: "Title",
+        subTitle: "Subtitle",
+        completeHandler: nil
+    )
+    
     static var previews: some View {
-        SwiftUIPasscode()
+        SwiftUIPasscode(input: input)
     }
 
 }
